@@ -1,0 +1,28 @@
+{
+  "name": "actors-graphql-server",
+  "version": "1.0.0",
+  "description": "A GraphQL server for managing actors and their movies.",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "seed": "node src/db/seed.js"
+  },
+  "dependencies": {
+    "apollo-server": "^3.6.7",
+    "graphql": "^15.5.0",
+    "mongoose": "^6.2.0",
+    "sequelize": "^6.37.7",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  },
+  "keywords": [
+    "graphql",
+    "apollo",
+    "actors",
+    "movies"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}
