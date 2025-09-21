@@ -12,12 +12,18 @@ async function start(){
         const server = new ApolloServer({
             typeDefs: schema,
             resolvers,
-            context: () => ({ db })
+            context: () => ({ db }),
+            // permitir introspección en producción y usar Playground
+            introspection: true,
+            plugins: [ApolloServerPluginLandingPageGraphQLPlayground()]
         });
 
         //Inicializar Apollo antes de aplicar el middleware
         await server.start();
         server.applyMiddleware({ app });
+
+        // redirigir raíz a /graphql para facilitar acceso
+        app.get('/', (_req, res) => res.redirect('/graphql'));
 
         app.listen(PORT, () => {
             console.log(`Server is running on http://localhost:${PORT}${server.graphqlPath}`);
